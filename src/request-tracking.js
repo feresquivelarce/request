@@ -1,7 +1,12 @@
 const axios = require('axios')
-const { helpers } = require('@tapp-pay/utils')
+const StandardError = require('standard-error')
 
-const { sendError } = helpers
+const sendError = (message, status) => {
+  const statusCode = {
+    status: status || 500,
+  }
+  throw new StandardError(message, statusCode)
+}
 
 /**
  * Promise based HTTP client
