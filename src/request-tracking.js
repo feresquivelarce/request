@@ -47,6 +47,6 @@ const createOptions = params => {
 
 // const setLog = async params => {}
 
-// const setRetrie = async params => {}
+// const setRetries = async params => {}
 
 module.exports = requestTracking
