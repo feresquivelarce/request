@@ -1,5 +1,6 @@
 const axios = require('axios')
 const { sendError, createRequestOptions } = require('./helpers')
+
   /**
    * Promise based HTTP client
    * @async
@@ -9,9 +10,7 @@ const { sendError, createRequestOptions } = require('./helpers')
    * @property {object}  params.headers - Default { content-type: application/json }
    * @property {string}  params.url - Required
    * @property {string}  params.responseType - Default json
-   * @property {object}  params.responseType - Default null
-   * @property {object}  params.retries - Default null
-   * @property {object}  params.log - Default null
+   * @property {object}  params.data - Default null
    * @return {array} The data from the URL.
    */
    const RequestSOIN = async params => {
@@ -23,11 +22,5 @@ const { sendError, createRequestOptions } = require('./helpers')
       return Object.keys(error).map(i => sendError(error[i]))
     }
   }
-
-  
-  // const setLog = async params => {}
-  
-  // const setRetries = async params => {}
-  
 
 module.exports = RequestSOIN
