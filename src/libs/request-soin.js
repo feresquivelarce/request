@@ -1,5 +1,5 @@
 const axios = require('axios')
-const { sendError, createRequestOptions } = require('./helpers')
+const { sendError, createRequestOptions } = require('../utils/helpers')
 
   /**
    * Promise based HTTP client

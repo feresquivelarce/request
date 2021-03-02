@@ -1,4 +1,4 @@
-const { sendError } = require('./helpers')
+const { sendError } = require('../utils/helpers')
 const RequestSOIN = require('./request-soin')
 
 /**
@@ -10,8 +10,9 @@ const RequestSOIN = require('./request-soin')
    * @property {object}  params.headers - Default { content-type: application/json }
    * @property {string}  params.url - Required
    * @property {string}  params.responseType - Default json
-   * @property {object}  params.retries - Default null
-   * @property {object}  params.log - Default null
+   * @property {object}  params.data - Default null
+   * @property {number}  params.retries - Default null
+   * @property {boolean}  params.log - Default null
    * @return {array} The data from the URL.
    */
 
@@ -20,17 +21,15 @@ class RequestTrackingSOIN {
         this.model = model
         this.currentWebRequestLog = null
     }
-    RequestTracking = async params => {
+    async RequestTracking(params) {
         try {
             const { log } = params
-            if(log) this.currentWebRequestLog = await this.createLog(params)
+            if(log) await this.createLog(params)
             const response = await RequestSOIN(params)
-
-            if(log && response) {
-                await this.updateLog({ status: 1, attempts: 1, response })
-            }
+            // if(log && response) await this.updateLog({ status: 1, attempts: 1, response })
+            return response
         } catch (error) {
-            if (error && webRequestLog) {
+            if (error && this.currentWebRequestLog) {
                 const webLog = {
                     status: -1,
                     error: error.stack,
@@ -43,15 +42,14 @@ class RequestTrackingSOIN {
         }
     }
 
-    createLog = async (opt) => {
-        const { params } = opt
+    async createLog (opt) {
+        const { data, retries } = opt
         try {
-            const { retries } = params     
             const webRequest = {
-                params,
+                data,
                 retries: retries || 0,
                 attempts: 0,
-                status: 0 // pendint
+                status: 0 // pendient
             }
             this.currentWebRequestLog = await this.model.create(webRequest)
             return true
@@ -60,14 +58,15 @@ class RequestTrackingSOIN {
         }
     }
 
-    updateLog = async (opt) => {
+    async updateLog (opt) {
         try {
-            this.currentWebRequestLog = await this.model.create(opt)
+            this.currentWebRequestLog = 'await this.model.updateLog(opt)'
             return true
         } catch (error) {
             sendError(error)
         }
     }
+
 }
 
 module.exports = RequestTrackingSOIN
