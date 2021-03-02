@@ -38,4 +38,19 @@ const attributes = {
     url: { type: STRING },
 }
 
-module.exports = { sendError, createRequestOptions, attributes }
+const optionsTesting = {
+  url: 'https://60300165a1e9d20017af15f2.mockapi.io/posts',
+  falseUrl: 'https://run.mocky.io/v3/f0895465-1e5b-43aa-8c5a-0badec7662ce',
+  mock: {
+    id: 1,
+    createdAt: '2021-02-19T02:19:50.782Z',
+    name: 'Ansel Schultz',
+    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/yehudab/128.jpg',
+  },
+  retriesAndLog: {
+    retries: 3, 
+    log: true
+  }
+}
+
+module.exports = { sendError, createRequestOptions, attributes, optionsTesting }
