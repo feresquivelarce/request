@@ -26,7 +26,7 @@ class RequestTrackingSOIN {
             const { log } = params
             if(log) await this.createLog(params)
             const response = await RequestSOIN(params)
-            // if(log && response) await this.updateLog({ status: 1, attempts: 1, response })
+            if(log && response) await this.updateLog({ status: 1, attempts: 1, response, ...params })
             return response
         } catch (error) {
             if (error && this.currentWebRequestLog) {
@@ -35,6 +35,7 @@ class RequestTrackingSOIN {
                     error: error.stack,
                     response: error,
                     attempts: 1,
+                    ...params
                 }
                 await this.updateLog(webLog)
             }
@@ -43,13 +44,15 @@ class RequestTrackingSOIN {
     }
 
     async createLog (opt) {
-        const { data, retries } = opt
+        const { data, retries, method = 'GET' } = opt
         try {
             const webRequest = {
                 data,
                 retries: retries || 0,
                 attempts: 0,
-                status: 0 // pendient
+                status: 0, // pendient,
+                ...opt,
+                method
             }
             this.currentWebRequestLog = await this.model.create(webRequest)
             return true
@@ -60,7 +63,8 @@ class RequestTrackingSOIN {
 
     async updateLog (opt) {
         try {
-            this.currentWebRequestLog = 'await this.model.updateLog(opt)'
+            const { method = 'GET'} = opt
+            await this.currentWebRequestLog.update({...opt, method})
             return true
         } catch (error) {
             sendError(error)
