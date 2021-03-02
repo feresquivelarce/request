@@ -1,6 +1,6 @@
 const { getInstance } = require('../utils/WebRequestLog');
 const { connection } = require('../utils/connection');
-const { attributes } = require('../utils/helpers');
+const { attributes, createAndFindAll } = require('../utils/helpers');
 
 const getWebRequestLogMock = async () => {
     const conn = await connection()
@@ -13,11 +13,12 @@ describe('Unit Test of Model WebRequestLog', () => {
         const modelMock = await getWebRequestLogMock()
         expect(JSON.stringify(modelWebRequestLog)).toBe(JSON.stringify(modelMock))
     })
-    test('show all data from SQLite', async () => {
+    test('insert and show all data from SQLite', async () => {
         const model = await getInstance()
+        model.create({ data: {}, retries: 0, attempts: 0, status: 0 })
         const data = await model.findAll()
         const response = JSON.stringify(data)
-        console.log('data from SQLite', response);
         expect(typeof response).toBe('string')
     })
+
 })

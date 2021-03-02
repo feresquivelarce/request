@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize')
 const { JSON, INTEGER,STRING } = DataTypes
 
 const sendError = (error) => {
@@ -53,4 +53,9 @@ const optionsTesting = {
   }
 }
 
-module.exports = { sendError, createRequestOptions, attributes, optionsTesting }
+module.exports = { 
+  sendError, 
+  createRequestOptions, 
+  attributes, 
+  optionsTesting, 
+}

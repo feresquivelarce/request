@@ -5,7 +5,7 @@ const { url, falseUrl, mock, retriesAndLog } = optionsTesting
 let request
 
 let ID = 0
-describe('Unit Test of RequestTracking SOIN', async () => {
+describe('Unit Test of RequestTracking SOIN', () => {
   test('GET ALL', async () => {
     const modelRequest = await getInstance()
     request = new RequestTrackingSOIN(modelRequest)
