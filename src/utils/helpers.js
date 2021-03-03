@@ -53,9 +53,15 @@ const optionsTesting = {
   }
 }
 
+const toObject = data => {
+  const response = JSON.stringify(data)
+  return JSON.parse(response)
+}
+
 module.exports = { 
   sendError, 
   createRequestOptions, 
   attributes, 
   optionsTesting, 
+  toObject,
 }
