@@ -1,5 +1,5 @@
-const RequestScheduler = require("../libs/request-scheduler");
-const { getInstance } = require("../utils/WebRequestLog");
+const RequestScheduler = require('../libs/request-scheduler');
+const { getInstance } = require('../utils/WebRequestLog');
 
 describe('Unit Test of Request Scheduler', () => {
     test('start', async () => {

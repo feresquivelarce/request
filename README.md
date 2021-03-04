@@ -89,6 +89,14 @@ const response = await request.RequestTracking({ params })
 	 *  {array} 	return response - the data from the URL.
 ```
 
+#### RequestScheduler
 
+Implemente `RequestScheduler` in cronjobs or scheduler logic
 
+```js
+const RequestScheduler = require('@soinlabs/ibs/request-scheduler')
+const { WebRequestLog } = require('models/WebRequestLog')
+await requestScheduler.start(limit)
+*  {number} limit - Default 10
+```
 
