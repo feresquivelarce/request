@@ -40,4 +40,4 @@ class RequestScheduler {
     }
 } 
 
-module.exports = { RequestScheduler }
+module.exports = RequestScheduler
