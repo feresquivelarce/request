@@ -24,11 +24,10 @@
     "testEnvironment": "node",
     "testPathIgnorePatterns": [
       "node_modules/",
-      "releases",
-      "config",
-      "subscribers"
+      "logs"
     ],
     "restoreMocks": true,
-    "bail": true
+    "bail": true,
+    "testTimeout": 10000
   }
 }

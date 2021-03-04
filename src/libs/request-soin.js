@@ -19,7 +19,7 @@ const { sendError, createRequestOptions } = require('../utils/helpers')
       const response = await axios(opt)
       return response.data
     } catch (error) {
-      return Object.keys(error).map(i => sendError(error[i]))
+      sendError(error)
     }
   }
 

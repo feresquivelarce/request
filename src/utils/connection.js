@@ -8,8 +8,8 @@ const connection = async () => {
             storage: path.resolve(__dirname, '../../logs/database.sqlite')
         })
         await sequelize.authenticate();
-        sequelize.sync()
-        console.log('Connection has been established successfully.')
+        // sequelize.sync()
+        console.info('Connection has been established successfully.')
         return sequelize
     } catch (error) {
         console.error('Unable to connect to the database:', error)
