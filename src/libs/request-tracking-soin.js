@@ -2,7 +2,19 @@ const { sendError } = require('../utils/helpers')
 const RequestSOIN = require('./request-soin')
 
 /**
-   * Promise based HTTP client with retries and log database
+   * Promise Class based on HTTP client with retries and log database
+   * @class RequestTrackingSOIN
+   * @param {object} model - Required Sequelize Object
+   * @return {class} The class RequestTrackingSOIN.
+   */
+class RequestTrackingSOIN {
+    constructor(model) {
+        this.model = model
+        this.currentWebRequestLog = null
+    }
+
+    /**
+   * Promise based HTTP on client with retries and log database
    * @async
    * @function RequestTrackingSOIN
    * @param {object} params - Object
@@ -15,12 +27,6 @@ const RequestSOIN = require('./request-soin')
    * @property {boolean}  params.log - Default null
    * @return {array} The data from the URL.
    */
-
-class RequestTrackingSOIN {
-    constructor(model) {
-        this.model = model
-        this.currentWebRequestLog = null
-    }
     async RequestTracking(params) {
         try {
             const { log } = params
