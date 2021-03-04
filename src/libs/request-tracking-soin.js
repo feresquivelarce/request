@@ -4,10 +4,12 @@ const RequestSOIN = require('./request-soin')
 /**
    * Promise Class based on HTTP client with retries and log database
    * @class RequestTrackingSOIN
-   * @param {object} model - Required Sequelize Object
    * @return {class} The class RequestTrackingSOIN.
    */
 class RequestTrackingSOIN {
+    /**
+     *  @param {object} model - Required Sequelize Object 
+     */
     constructor(model) {
         this.model = model
         this.currentWebRequestLog = null
