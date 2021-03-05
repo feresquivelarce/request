@@ -33,7 +33,7 @@ class RequestTracking {
         try {
             const { log } = params
             if(log) await this.createLog(params)
-            const response = await RequestSOIN(params)
+            const response = await Request(params)
             if(log && response) await this.updateLog({ status: 1, attempts: 1, response, ...params })
             return response
         } catch (error) {
