@@ -1,14 +1,14 @@
-const RequestTrackingSOIN = require('../libs/request-tracking-soin')
+const RequestTracking = require('../libs/request-tracking')
 const { optionsTesting } = require('../utils/helpers')
 const { getInstance } = require('../utils/WebRequestLog')
 const { url, falseUrl, mock, retriesAndLog } = optionsTesting
 let request
 
 let ID = 0
-describe('Unit Test of RequestTracking SOIN', () => {
+describe('Unit Test of RequestTracking', () => {
   test('GET ALL', async () => {
     const modelRequest = await getInstance()
-    request = new RequestTrackingSOIN(modelRequest)
+    request = new RequestTracking(modelRequest)
     const response = await request.RequestTracking({ url, ...retriesAndLog })
     ID = response[0].id
     expect(typeof response).toBe('object')

@@ -1,4 +1,4 @@
-const RequestSOIN = require('./request-soin')
+const Request = require('./request')
 const { Sequelize } = require('sequelize');
 const { Op } = Sequelize
 const { optionsTesting } = require('../utils/helpers')
@@ -12,7 +12,7 @@ class RequestScheduler {
         const resultPromise = res.map(async item => {
             console.log('item',);
             const { id, attempts, method, url, data } = item
-            const dataRequest = await RequestSOIN({ url, method, data })
+            const dataRequest = await Request({ url, method, data })
             const { response } = dataRequest
             const dataUpdated = await this.model.update(
                 { 

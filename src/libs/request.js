@@ -13,7 +13,7 @@ const { sendError, createRequestOptions } = require('../utils/helpers')
    * @property {object}  params.data - Default null
    * @return {array} The data from the URL.
    */
-   const RequestSOIN = async params => {
+   const Request = async params => {
     try {
       const opt = createRequestOptions(params)
       const response = await axios(opt)
@@ -23,4 +23,4 @@ const { sendError, createRequestOptions } = require('../utils/helpers')
     }
   }
 
-module.exports = RequestSOIN
+module.exports = Request
