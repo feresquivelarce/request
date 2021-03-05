@@ -1,9 +1,9 @@
 const { RequestScheduler } = require('./src/libs/request-scheduler');
-const RequestSOIN = require('./src/libs/request-soin');
-const RequestTrackingSOIN = require('./src/libs/request-tracking-soin');
+const Request = require('./src/libs/request');
+const RequestTracking = require('./src/libs/request-tracking');
 
 module.exports = {
-    RequestSOIN,
-    RequestTrackingSOIN,
+    Request,
+    RequestTracking,
     RequestScheduler
 }
