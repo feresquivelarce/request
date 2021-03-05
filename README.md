@@ -1,22 +1,22 @@
-# RequestSOIN
+# Request
 
 #### Request library based on HTTP promise for SOIN
 
 This repo/package exports 3 libraries: 
 
-`RequestSOIN`: It's a simple and lightweight library based on HTTP Promise queries used as a function, ready to use anywhere.
+`Request`: It's a simple and lightweight library based on HTTP Promise queries used as a function, ready to use anywhere.
 
-`RequestTrackingSOIN`: It's a complex library based on HTTP Promise queries used as a Class, it's required to instance and pass a Sequelize object before to use
+`RequestTracking`: It's a complex library based on HTTP Promise queries used as a Class, it's required to instance and pass a Sequelize object before to use
 
 `RequestScheduler`: It's another library used to retrieve fetch the HTTP queries inside in the table WebRequestLogs, it's required to instance and pass a Sequelize object before to use
 
 ### How to use it?
 
-#### RequestSOIN
+#### Request
 
 ```js
-const RequestSOIN = require('@soinlabs/request-soin')
-const response = await RequestSOIN({ params })
+const Request = require('@soin/request')
+const response = await Request({ params })
 - Where
    *  params - Object
    *  {string}  params.method - Default GET
@@ -27,7 +27,7 @@ const response = await RequestSOIN({ params })
 	 *  {array} 	return response - the data from the URL.
 ```
 
-#### RequestTrackingSOIN
+#### RequestTracking
 
 Insert the next SQL script in the database need it:
 
@@ -69,13 +69,13 @@ module.exports = (sequelize, DataTypes) => {
 }
 ```
 
-And finally, the implementation of RequestTrackingSOIN
+And finally, the implementation of RequestTracking
 
 ```js
-const RequestTrackingSOIN = require('@soinlabs/request-tracking-soin')
+const RequestTracking = require('@soin/request-tracking')
 const { WebRequestLog } = require('models/WebRequestLog')
 
-const request = new RequestTrackingSOIN(WebRequestLog)
+const request = new RequestTracking(WebRequestLog)
 const response = await request.RequestTracking({ params })
 - Where
    *  params - Object
@@ -94,7 +94,7 @@ const response = await request.RequestTracking({ params })
 Implemente `RequestScheduler` in cronjobs or scheduler logic
 
 ```js
-const RequestScheduler = require('@soinlabs/ibs/request-scheduler')
+const RequestScheduler = require('@soin/ibs/request-scheduler')
 const { WebRequestLog } = require('models/WebRequestLog')
 await requestScheduler.start(limit)
 *  {number} limit - Default 10
