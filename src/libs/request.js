@@ -1,10 +1,10 @@
 const axios = require('axios')
-const { sendError, createRequestOptions } = require('../utils/helpers')
+const { createError, createRequestOptions } = require('../utils/helpers')
 
   /**
    * Promise function based on HTTP client
    * @async
-   * @function RequestSOIN
+   * @function Request
    * @param {object} params - Object
    * @property {string}  params.method - Default GET
    * @property {object}  params.headers - Default { content-type: application/json }
@@ -17,10 +17,11 @@ const { sendError, createRequestOptions } = require('../utils/helpers')
     try {
       const opt = createRequestOptions(params)
       const response = await axios(opt)
-      return response.data
+      const { data } = response
+      return data
     } catch (error) {
-      sendError(error)
-    }
+      createError(error)
+    } 
   }
 
 module.exports = Request

@@ -1,10 +1,10 @@
-const { sendError } = require('../utils/helpers')
+const { createError, printError } = require('../utils/helpers')
 const Request = require('./request')
 
 /**
    * Promise Class based on HTTP client with retries and log database
-   * @class RequestTrackingSOIN
-   * @return {class} The class RequestTrackingSOIN.
+   * @class RequestTracking
+   * @return {class} The class RequestTracking
    */
 class RequestTracking {
     /**
@@ -47,8 +47,8 @@ class RequestTracking {
                 }
                 await this.updateLog(webLog)
             }
-            sendError(error)
-        }
+            printError(error)
+        } 
     }
 
     async createLog (opt) {
@@ -65,8 +65,8 @@ class RequestTracking {
             this.currentWebRequestLog = await this.model.create(webRequest)
             return true
         } catch (error) {
-            sendError(error)
-        }
+            createError(error)
+        } 
     }
 
     async updateLog (opt) {
@@ -75,8 +75,8 @@ class RequestTracking {
             await this.currentWebRequestLog.update({...opt, method})
             return true
         } catch (error) {
-            sendError(error)
-        }
+            createError(error)
+        } 
     }
 
 }

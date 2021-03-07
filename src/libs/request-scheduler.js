@@ -1,42 +1,66 @@
 const Request = require('./request')
 const { Sequelize } = require('sequelize');
 const { Op } = Sequelize
-const { optionsTesting } = require('../utils/helpers')
-const { falseUrl } = optionsTesting
 class RequestScheduler {
     constructor(model) {
         this.model = model
     }
 
     async execJob(res) {
-        const resultPromise = res.map(async item => {
-            console.log('item',);
-            const { id, attempts, method, url, data } = item
-            const dataRequest = await Request({ url, method, data })
-            const { response } = dataRequest
-            const dataUpdated = await this.model.update(
-                { 
-                    attempts: attempts + 1, 
-                    status: 1, 
-                    response 
-                },
-                { where: { id } },
-            )
-            return dataUpdated
-        })
-        const resultResolve = await Promise.all(resultPromise)
-        return resultResolve[0]
+        try {
+            const resultPromise = res.map(async item => {
+                const { method, url, data } = item
+                const response = Request({ url, method, data })
+                return this.update(item, response)
+            })
+            const resultResolve = await Promise.all(resultPromise)
+            console.log('resultResolve[0]', resultResolve[0]);
+            return resultResolve[0]
+        } catch (error) {
+            console.error(error.message)
+        }
+    }
+
+    async update(params, response) {
+        console.log('params, response', params, response);
+        try {
+            const { id, attempts = 1 } = params
+            const opt = {
+                attempts: attempts + 1,
+                status: 1,
+                response
+            }
+            return await this.model.update(opt, { where: { id } })
+        } catch (error) {
+            console.error(error.message)
+        }  
+    }
+
+    async findAll(limit) {
+        try {
+            const retries = { [Op.gte]: Sequelize.col('attempts')}
+            const where = { retries, status: -1 }
+            const data = await this.model.findAll({ where, limit })
+            const parsedData = JSON.stringify(data)
+            return JSON.parse(parsedData)
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     async start(limit = 10) {
-        const retries = { [Op.gte]: Sequelize.col('attempts')}
-        const status = -1
-        const where = { retries, status }
-        const data = await this.model.findAll({ where, limit })
-        const parsedData = JSON.stringify(data)
-        const res = JSON.parse(parsedData)
-        if(!res.length) return 'Jobs are empty'
-        return await this.execJob(res)
+        const res = []
+        try {
+            const result = await this.findAll(limit)
+            if(!result.length) return 'Jobs are empty'
+            res.success = await this.execJob(result)
+            return res
+        } catch (error) {
+            res.errors = error
+            console.error(res)
+        } finally {
+            return res
+        }
     }
 } 
 
