@@ -4,6 +4,12 @@
 
 [![codecov](https://codecov.io/gh/SoinLabs/request/branch/master/graph/badge.svg?token=MJP66V0RQM)](https://codecov.io/gh/SoinLabs/request)
 
+[![npm version](https://badge.fury.io/js/@soinlabs/request.svg)](https://badge.fury.io/js/@soinlabs/request)
+
+| Statements                  | Branches                | Functions                 | Lines                |
+| --------------------------- | ----------------------- | ------------------------- | -------------------- |
+| ![Statements](#statements#) | ![Branches](#branches#) | ![Functions](#functions#) | ![Lines](#lines#)    |
+
 This repo/package exports 3 libraries: 
 
 `Request`: It's a simple and lightweight library based on HTTP Promise queries used as a function, ready to use anywhere.

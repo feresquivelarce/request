@@ -16,11 +16,11 @@ class ServerNotResponse extends Error {
         this.name = 'Server Not Response'
     }
 }
-class ServerNotResponse extends Error {
+class ModelError extends Error {
     constructor(message) {
         super(message)
-        this.name = 'Server Not Response'
+        this.name = 'Model Error'
     }
 }
 
-module.exports = { ConnectionError, AxiosError, ServerNotResponse }
+module.exports = { ConnectionError, AxiosError, ServerNotResponse, ModelError }

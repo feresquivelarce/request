@@ -1,3 +1,4 @@
+const { adapterModelError } = require('../utils/adapters-errors')
 const { createError, printError } = require('../utils/helpers')
 const Request = require('./request')
 
@@ -65,7 +66,7 @@ class RequestTracking {
             this.currentWebRequestLog = await this.model.create(webRequest)
             return true
         } catch (error) {
-            createError(error)
+            adapterModelError(error)
         } 
     }
 
@@ -75,7 +76,7 @@ class RequestTracking {
             await this.currentWebRequestLog.update({...opt, method})
             return true
         } catch (error) {
-            createError(error)
+            adapterModelError(error)
         } 
     }
 

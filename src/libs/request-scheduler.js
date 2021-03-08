@@ -1,6 +1,8 @@
 const Request = require('./request')
 const { Sequelize } = require('sequelize');
+const { adapterModelError } = require('../utils/adapters-errors');
 const { Op } = Sequelize
+
 class RequestScheduler {
     constructor(model) {
         this.model = model
@@ -32,7 +34,7 @@ class RequestScheduler {
             }
             return await this.model.update(opt, { where: { id } })
         } catch (error) {
-            console.error(error.message)
+            adapterModelError(error)
         }  
     }
 
@@ -44,7 +46,7 @@ class RequestScheduler {
             const parsedData = JSON.stringify(data)
             return JSON.parse(parsedData)
         } catch (error) {
-            console.error(error)
+            adapterModelError(error)
         }
     }
 
