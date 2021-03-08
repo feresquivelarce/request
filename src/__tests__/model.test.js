@@ -1,9 +1,10 @@
 const { getInstance } = require('../utils/WebRequestLog');
 const { connection } = require('../utils/connection');
-const { attributes, createAndFindAll } = require('../utils/helpers');
+const { attributes } = require('../utils/helpers');
+const { adapterConnectionError } = require('../utils/adapters-errors');
 
 const getWebRequestLogMock = async () => {
-    const conn = await connection()
+    const conn = await connection(adapterConnectionError)
     return conn.define('WebRequestLogs', attributes)
 }
 

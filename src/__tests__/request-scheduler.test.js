@@ -1,7 +1,7 @@
 const RequestScheduler = require('../libs/request-scheduler');
 const { getInstance } = require('../utils/WebRequestLog');
 
-describe('Unit Test of Request Scheduler', () => {
+describe('Unit Test of Scheduler', () => {
     test('start', async (done) => {
         try {
             const modelRequest = await getInstance()

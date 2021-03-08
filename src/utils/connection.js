@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 const path = require('path')
 
-const connection = async () => {
+const connection = async (connectionError) => {
     try {
         const sequelize = new Sequelize({
             dialect: 'sqlite',
@@ -12,7 +12,7 @@ const connection = async () => {
         console.info('Connection has been established successfully.')
         return sequelize
     } catch (error) {
-        console.error('Unable to connect to the database:', error)
+        connectionError('Unable to connect to the database:', error)
     }
 }
 

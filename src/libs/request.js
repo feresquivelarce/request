@@ -1,5 +1,6 @@
 const axios = require('axios')
-const { createError, createRequestOptions } = require('../utils/helpers')
+const { adapterAxiosError } = require('../utils/adapters-errors')
+const { createRequestOptions } = require('../utils/helpers')
 
   /**
    * Promise function based on HTTP client
@@ -13,14 +14,14 @@ const { createError, createRequestOptions } = require('../utils/helpers')
    * @property {object}  params.data - Default null
    * @return {array} The data from the URL.
    */
-   const Request = async params => {
+   const Request = async (params) => {
     try {
       const opt = createRequestOptions(params)
       const response = await axios(opt)
       const { data } = response
       return data
     } catch (error) {
-      createError(error)
+      adapterAxiosError(error)
     } 
   }
 

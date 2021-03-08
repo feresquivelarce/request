@@ -1,10 +1,6 @@
 const { DataTypes } = require('sequelize')
 const { JSON, INTEGER,STRING } = DataTypes
 
-const createError = error => {
-  throw new Error(error)
-}
-
 const printError = error => {
   const { message } = error
   console.error(message)
@@ -59,7 +55,6 @@ const optionsTesting = {
 }
 
 module.exports = { 
-  createError, 
   printError,
   createRequestOptions, 
   attributes, 
