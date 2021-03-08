@@ -8,7 +8,7 @@
 
 | Statements                  | Branches                | Functions                 | Lines                |
 | --------------------------- | ----------------------- | ------------------------- | -------------------- |
-| ![Statements](https://img.shields.io/badge/Coverage-63.85%25-red.svg) | ![Branches](https://img.shields.io/badge/Coverage-53.13%25-red.svg) | ![Functions](https://img.shields.io/badge/Coverage-47.83%25-red.svg) | ![Lines](https://img.shields.io/badge/Coverage-65.04%25-red.svg)    |
+| ![Statements](#statements#) | ![Branches](#branches#) | ![Functions](#functions#) | ![Lines](#lines#)    |
 
 This repo/package exports 3 libraries: 
 
