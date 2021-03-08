@@ -3,12 +3,8 @@
 #### Request library based on HTTP promise for SOIN
 
 [![codecov](https://codecov.io/gh/SoinLabs/request/branch/master/graph/badge.svg?token=MJP66V0RQM)](https://codecov.io/gh/SoinLabs/request)
-
-[![npm version](https://badge.fury.io/js/@soinlabs/request.svg)](https://badge.fury.io/js/@soinlabs/request)
-
-| Statements                  | Branches                | Functions                 | Lines                |
-| --------------------------- | ----------------------- | ------------------------- | -------------------- |
-| ![Statements](https://img.shields.io/badge/Coverage-81.25%25-yellow.svg) | ![Branches](https://img.shields.io/badge/Coverage-60%25-red.svg) | ![Functions](https://img.shields.io/badge/Coverage-86.96%25-yellow.svg) | ![Lines](https://img.shields.io/badge/Coverage-82.11%25-yellow.svg)    |
+[![npm version](https://badgen.net/npm/v/@soinlabs/request)](https://www.npmjs.com/package/@soinlabs/request)
+[![npm downloads](https://badgen.net/npm/dm/@soinlabs/request)](https://www.npmjs.com/package/@soinlabs/request)
 
 This repo/package exports 3 libraries: 
 
