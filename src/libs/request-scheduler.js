@@ -23,7 +23,6 @@ class RequestScheduler {
     }
 
     async update(params, response) {
-        console.log('params, response', params, response);
         try {
             const { id, attempts = 1 } = params
             const opt = {

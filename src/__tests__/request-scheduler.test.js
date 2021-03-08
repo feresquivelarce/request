@@ -1,11 +1,21 @@
 const RequestScheduler = require('../libs/request-scheduler');
 const { getInstance } = require('../utils/WebRequestLog');
 
+let requestScheduler
 describe('Unit Test of Scheduler', () => {
-    test('start', async (done) => {
+    test('function findAll', async (done) => {
         try {
             const modelRequest = await getInstance()
-            const requestScheduler = new RequestScheduler(modelRequest)
+            requestScheduler = new RequestScheduler(modelRequest)
+            const response = await requestScheduler.findAll(10)
+            expect(Array.isArray(data)).toBe(true)
+            done()
+        } catch (error) {
+            done.fail(error)
+        }
+    })
+    test('function start', async (done) => {
+        try {
             const response = await requestScheduler.start(10)
             if(!Array.isArray(response)) expect(response).toEqual(expect.stringContaining('Jobs are empty'))
             else expect(response[0]).toBe(1)
