@@ -16,7 +16,6 @@ class RequestScheduler {
                 return this.update(item, response)
             })
             const resultResolve = await Promise.all(resultPromise)
-            console.log('resultResolve[0]', resultResolve[0]);
             return resultResolve[0]
         } catch (error) {
             console.error(error.message)
@@ -51,17 +50,12 @@ class RequestScheduler {
     }
 
     async start(limit = 10) {
-        const res = []
         try {
             const result = await this.findAll(limit)
             if(!result.length) return 'Jobs are empty'
-            res.success = await this.execJob(result)
-            return res
+            return await this.execJob(result)
         } catch (error) {
-            res.errors = error
             console.error(res)
-        } finally {
-            return res
         }
     }
 } 
