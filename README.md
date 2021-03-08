@@ -2,6 +2,8 @@
 
 #### Request library based on HTTP promise for SOIN
 
+[![codecov](https://codecov.io/gh/SoinLabs/request/branch/master/graph/badge.svg?token=MJP66V0RQM)](https://codecov.io/gh/SoinLabs/request)
+
 This repo/package exports 3 libraries: 
 
 `Request`: It's a simple and lightweight library based on HTTP Promise queries used as a function, ready to use anywhere.
