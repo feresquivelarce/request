@@ -1,6 +1,6 @@
 const Request = require('../libs/request')
 const { optionsTesting } = require('../utils/helpers')
-const { falseUrl: url, mock } = optionsTesting
+const { falseUrl, url, mock } = optionsTesting
 let ID = 0
 
 describe('Unit Test of Request SOIN', () => {
@@ -18,7 +18,7 @@ describe('Unit Test of Request SOIN', () => {
 
   test('Not found URL', async () => {
     expect(async () => {
-      const response = await Request({ url })
+      const response = await Request({ url: falseUrl })
       expect(response).toThrow()
     })
   })
