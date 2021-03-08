@@ -12,11 +12,13 @@ const adapterAxiosError = (error) => {
     throw new AxiosError(message)
 }
 
-const adapterServerNotResponse = (message) => { throw new ServerNotResponse(message)}
+const adapterServerNotResponse = (error) => { 
+    const { message } = error
+    throw new ServerNotResponse(message)
+}
 
-const adapterModelError = (message) => {
-    const { message: reason } = error
-    if(reason) throw new ModelError(`${message}: ${reason}}`)
+const adapterModelError = (error) => {
+    const { message } = error
     throw new ModelError(message)
 }
 

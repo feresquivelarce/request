@@ -32,6 +32,7 @@
     "restoreMocks": true,
     "bail": true,
     "testTimeout": 10000,
-    "collectCoverage": true
+    "collectCoverage": true,
+    "coverageReporters": ["json-summary"]
   }
 }

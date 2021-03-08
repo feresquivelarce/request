@@ -8,7 +8,18 @@ describe('Unit Test of Scheduler', () => {
             const modelRequest = await getInstance()
             requestScheduler = new RequestScheduler(modelRequest)
             const response = await requestScheduler.findAll(10)
-            expect(Array.isArray(data)).toBe(true)
+            expect(Array.isArray(response)).toBe(true)
+            done()
+        } catch (error) {
+            done.fail(error)
+        }
+    })
+    test('function execJob', async (done) => {
+        try {
+            const modelRequest = await getInstance()
+            requestScheduler = new RequestScheduler(modelRequest)
+            const response = await requestScheduler.execJob([])
+            expect(Array.isArray(response)).toBe(false) // expected false cuz res is array empty
             done()
         } catch (error) {
             done.fail(error)
