@@ -5,7 +5,7 @@ const connection = async (connectionError) => {
     try {
         const sequelize = new Sequelize({
             dialect: 'sqlite',
-            storage: path.resolve(__dirname, '../../logs/database.sqlite')
+            storage: path.resolve(__dirname, '../../sqlite/database.sqlite')
         })
         await sequelize.authenticate();
         // sequelize.sync()
