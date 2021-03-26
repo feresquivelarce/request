@@ -2,9 +2,11 @@
   "name": "request",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:josechavarriacr/request.git",
-  "author": "Rafa <jchavarria@soin.co.cr>",
+  "repository": "git@github.com:SoinLabs/request.git",
+  "author": "SoinLabs <soinlabs@soin.co.cr>",
   "license": "MIT",
+  "description": "A request package made with retries and traceability",
+  "keywords": ["request", "axios", "traceability"],
   "scripts": {
     "test": "env NODE_ENV=testing jest --forceExit --detectOpenHandles --silent",
     "test:debug": "env NODE_ENV=testing jest --forceExit --detectOpenHandles"
