@@ -1,4 +1,5 @@
 const { DataTypes } = require('sequelize')
+const { adapterAxiosError } = require('./adapters-errors')
 const { JSON, INTEGER,STRING } = DataTypes
 
 const printError = error => {
@@ -8,7 +9,7 @@ const printError = error => {
 
 const createRequestOptions = params => {
   const { method, headers, url, responseType, data } = params
-  if (!url) sendError('URL can not be undefined')
+  if (!url) adapterAxiosError('URL can not be undefined')
   const opt = {
     method: method || 'GET',
     headers: headers || { 'content-type': 'application/json' },

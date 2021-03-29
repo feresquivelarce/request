@@ -19,8 +19,8 @@ This repo/package exports 3 libraries:
 #### Request
 
 ```js
-const Request = require('@soinlabs/request')
-const response = await Request({ params })
+const { Request } = require('@soinlabs/request')
+const response = await Request(params)
 - Where
    *  params - Object
    *  {string}  params.method - Default GET
@@ -76,11 +76,11 @@ module.exports = (sequelize, DataTypes) => {
 And finally, the implementation of RequestTracking
 
 ```js
-const RequestTracking = require('@soinlabs/request-tracking')
+const { RequestTracking } = require('@soinlabs/request-tracking')
 const { WebRequestLog } = require('models/WebRequestLog')
 
 const request = new RequestTracking(WebRequestLog)
-const response = await request.RequestTracking({ params })
+const response = await request.RequestTracking(params)
 - Where
    *  params - Object
    *  {string}  params.method - Default GET
@@ -98,8 +98,10 @@ const response = await request.RequestTracking({ params })
 Implemente `RequestScheduler` in cronjobs or scheduler logic
 
 ```js
-const RequestScheduler = require('@soinlabs/ibs/request-scheduler')
+const { RequestScheduler } = require('@soinlabs/ibs/request-scheduler')
 const { WebRequestLog } = require('models/WebRequestLog')
+
+const requestScheduler = new RequestScheduler(WebRequestLog)
 await requestScheduler.start(limit)
 - Where
 *  {number} limit - Default 10

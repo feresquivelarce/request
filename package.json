@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "chalk": "^4.1.0",
     "standard-error": "^1.1.0"
   },
   "jest": {

@@ -17,6 +17,7 @@ const { createRequestOptions } = require('../utils/helpers')
    const Request = async (params) => {
     try {
       const opt = createRequestOptions(params)
+
       const response = await axios(opt)
       const { data } = response
       return data
