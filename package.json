@@ -1,5 +1,5 @@
 {
-  "name": "request",
+  "name": "@soinlabs/request",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:josechavarriacr/request.git",
@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "chalk": "^4.1.0",
     "standard-error": "^1.1.0"
   },
   "jest": {
