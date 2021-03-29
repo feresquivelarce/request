@@ -7,7 +7,7 @@ const run = async() => {
         method: 'get',
         url, 
     }
-    const response = await Request({ params })
+    const response = await Request(params)
     console.log('response', response)
 }
 
