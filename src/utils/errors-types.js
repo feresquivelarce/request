@@ -7,9 +7,10 @@ class ConnectionError extends Error {
     }
 }
 class AxiosError extends Error {
-    constructor(message) {
+    constructor(message,status) {
         super(message)
-        this.name = red('❌ Axios HTTP Error')
+        this.name = red(`❌ ${message}`)
+        this.status = status
     }
 }
 class ServerNotResponse extends Error {

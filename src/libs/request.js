@@ -22,7 +22,10 @@ const { createRequestOptions } = require('../utils/helpers')
       const { data } = response
       return data
     } catch (error) {
+      const {response}=error
+      const {statusText,status}=response
       adapterAxiosError(error)
+      return {message: statusText,status}
     } 
   }
 
