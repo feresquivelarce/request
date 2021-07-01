@@ -26,7 +26,7 @@ const { createRequestOptions } = require('../utils/helpers')
       if(error.code==='ECONNREFUSED'){
         return {message:`${error.code} ${error.address}`,status: 500}
       }
-      // Se añade validadción para internal server error
+      // Se añade validación para internal server error
       if(error.response.statusText==='Internal Server Error'){
         return {message:error.response.statusText,status:error.response.status}
       }
