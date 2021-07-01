@@ -11,8 +11,9 @@ const adapterConnectionError = (message, error) => {
 
 const adapterAxiosError = (error) => {
     const {response}=error
-    const {statusText,status}=response
-    const setError = new AxiosError(statusText,status)
+    const {data}=response
+    const {statusCode, message}=data
+    const setError = new AxiosError(message,statusCode)
     new Promise((resolve, reject) => reject(setError)).
     catch(error => console.log(error.name, error.status))
 }
