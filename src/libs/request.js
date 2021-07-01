@@ -22,10 +22,13 @@ const { createRequestOptions } = require('../utils/helpers')
       const { data } = response
       return data
     } catch (error) {
+      if(error.code==='ECONNREFUSED'){
+        return {message:`${error.code} ${error.address}`,status: 500}
+      }
       const {response}=error
-      const {statusText,status}=response
+      const {data}=response
       adapterAxiosError(error)
-      return {message: statusText,status}
+      return data
     } 
   }
 
