@@ -23,16 +23,19 @@ const { createRequestOptions } = require('../utils/helpers')
       return data
     } catch (error) {
       // Se añade validación para cuando no se logra conectar al server
-      if(error.code==='ECONNREFUSED'){
-        return {message:`${error.code} ${error.address}`,status: 500}
+      if(error.code === 'ECONNREFUSED'){
+        return { message: `${error.code} ${error.address}`, status: 500}
       }
       // Se añade validación para internal server error
-      if(error.response.statusText==='Internal Server Error'){
-        return {message:error.response.statusText,status:error.response.status}
+      if(error.response && error.response.statusText === 'Internal Server Error'){
+        return { 
+          message: error.response.statusText,
+          status: error.response.status
+        }
       }
       // Retorna el resto de errores posibles
-      const {response}=error
-      const {data}=response
+      const { response } = error
+      const { data } = response
       adapterAxiosError(error)
       return data
     } 
