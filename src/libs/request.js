@@ -28,10 +28,7 @@ const { createRequestOptions } = require('../utils/helpers')
       }
       // Se añade validación para internal server error
       if(error.response && error.response.statusText === 'Internal Server Error'){
-        return { 
-          message: error.response.statusText,
-          status: error.response.status
-        }
+        return {message:error.response.data.message,status:error.response.status,statusCode:error.response.status}
       }
       // Retorna el resto de errores posibles
       const { response } = error
