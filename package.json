@@ -1,12 +1,16 @@
 {
   "name": "@soinlabs/request",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "index.js",
   "repository": "git@github.com:SoinLabs/request.git",
   "author": "SoinLabs <soinlabs@soin.co.cr>",
   "license": "MIT",
   "description": "A request package made with retries and traceability",
-  "keywords": ["request", "axios", "traceability"],
+  "keywords": [
+    "request",
+    "axios",
+    "traceability"
+  ],
   "scripts": {
     "test": "env NODE_ENV=testing jest --forceExit --detectOpenHandles --silent",
     "test:debug": "env NODE_ENV=testing jest --forceExit --detectOpenHandles"
