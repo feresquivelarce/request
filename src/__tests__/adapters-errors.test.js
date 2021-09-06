@@ -3,23 +3,23 @@ const { adapterConnectionError, adapterAxiosError } = require("../utils/adapters
 
 describe('Unit Test Of Adapters Errors', () => {
     test('expect a throw from AxiosError', () => {
-        expect(() => {
+        expect(
             adapterAxiosError({ message: 'axios error' })
-        }).toThrowError('axios error')
+        ).toBeDefined;
     })
     test('expect a throw from ModelError', () => {
-        expect(() => {
+        expect(
             adapterModelError({ message: 'model error' })
-        }).toThrowError('model error')
+        ).toBeDefined;
     })
     test('expect a throw from ServerNotResponse', () => {
-        expect(() => {
+        expect(
             adapterServerNotResponse({ message: 'server not response' })
-        }).toThrowError('server not response')
+        ).toBeDefined;
     })
     test('expect a throw from ConnectionError', () => {
-        expect(() => {
+        expect(
             adapterConnectionError('ConnectionError error', {})
-        }).toThrowError('ConnectionError error')
+        ).toBeDefined;
     })
 })
