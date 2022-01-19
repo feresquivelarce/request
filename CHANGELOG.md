@@ -6,6 +6,11 @@ All notable changes to this project will be documented in this file.
 
 ## [1.0.8] - 2022-01-19
 
+### Added
+
+- throwError param was added for request that need throws the exception when request fails
+- Sequelize was added as a dependency for projects without that dependency, because is required for request trackings
+
 ## [0.0.1] - 2021-03-08
 
 ### Added
