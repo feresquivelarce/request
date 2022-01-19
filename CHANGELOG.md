@@ -1,8 +1,10 @@
-
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+## [1.0.8] - 2022-01-19
 
 ## [0.0.1] - 2021-03-08
 
@@ -32,7 +34,5 @@ All notable changes to this project will be documented in this file.
 - added more Unit Tests
 - change in badges
 
-
 [unreleased]: https://github.com/SoinLabs/request/compare/v1.1.0...HEAD
-
 [0.0.1]: https://github.com/SoinLabs/request/releases/tag/v0.0.1
