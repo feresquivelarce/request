@@ -13,7 +13,7 @@ const createRequestOptions = (parameters) => {
 	const opt = {
 		method: method || 'GET',
 		headers: headers || { 'content-type': 'application/json' },
-		url,
+		url: bindUrlParameters(parameters),
 		responseType: responseType || 'json',
 		data: data || null,
 		params: params || null,
@@ -21,6 +21,15 @@ const createRequestOptions = (parameters) => {
 	return opt
 }
 
+const bindUrlParameters = (parameters) => {
+	let { url, params } = parameters
+	if (params) {
+		for (const [key, value] of Object.entries(params)) {
+			url = url.replace(`:${key}`, value)
+		}
+	}
+	return url
+}
 const attributes = {
 	id: {
 		allowNull: false,
