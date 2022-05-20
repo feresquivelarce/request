@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.0.13] - 2022-05-20
+
+### Fixes
+
+- Get status from response
+
+## [1.0.12] - 2022-05-20
+
+### Fixes
+
+- the throw error is modified when a request gives an error, since it did not return the status or the statusCode
+
 ## [1.0.8] - 2022-01-19
 
 ### Added
