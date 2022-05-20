@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.0.14] - 2022-05-20
+
+### Fixes
+
+- Missing merge
+
 ## [1.0.13] - 2022-05-20
 
 ### Fixes
