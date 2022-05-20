@@ -13,7 +13,7 @@
 	],
 	"scripts": {
 		"test": "env NODE_ENV=testing jest --forceExit --detectOpenHandles --silent",
-		"test:debug": "env NODE_ENV=testing jest --forceExit --detectOpenHandles"
+		"test:debug": "yarn test:clean && env NODE_ENV=testing jest --forceExit --detectOpenHandles"
 	},
 	"devDependencies": {
 		"codecov": "^3.8.1",

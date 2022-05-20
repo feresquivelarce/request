@@ -43,4 +43,16 @@ describe('Unit Test of Tracking', () => {
     const response = await request.RequestTracking(opt)
     expect(typeof response).toBe('object')
   })
+
+  test('Create Log', async () => {
+    const opt = { data: 'test' }
+    const response = await request.createLog(opt)
+    expect(response).toBe(true)
+  })
+
+  test('Update Log', async () => {
+    const opt = { data: 'test' }
+    const response = await request.updateLog(opt)
+    expect(response).toBe(true)
+  })
 })

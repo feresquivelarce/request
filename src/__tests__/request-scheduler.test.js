@@ -36,4 +36,29 @@ describe('Unit Test of Scheduler', () => {
             done.fail(error)
         }
     })
+
+    test('function update', async (done) => {
+        try {
+            const modelRequest = await getInstance()
+            requestScheduler = new RequestScheduler(modelRequest)
+            const params = { id: 1 }
+            const response = await requestScheduler.update(params, true)
+            expect(Array.isArray(response)).toBe(true) 
+            done()
+        } catch (error) {
+            done.fail(error)
+        }
+    })
+
+    test('function findAll', async (done) => {
+        try {
+            const modelRequest = await getInstance()
+            requestScheduler = new RequestScheduler(modelRequest)
+            const response = await requestScheduler.findAll(1)
+            expect(Array.isArray(response)).toBe(true) 
+            done()
+        } catch (error) {
+            done.fail(error)
+        }
+    })
 })
