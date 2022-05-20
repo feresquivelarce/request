@@ -10,10 +10,12 @@ const adapterConnectionError = (message, error) => {
 }
 
 const adapterAxiosError = (error) => {
-    const { message } = error
-    const setError = new AxiosError(message)
+    const {response}=error
+    const {data}=response
+    const {statusCode, message}=data
+    const setError = new AxiosError(message,statusCode)
     new Promise((resolve, reject) => reject(setError)).
-    catch(error => console.log(error.name, error.message))
+    catch(error => console.log(error.name, error.status))
 }
 
 const adapterServerNotResponse = (error) => { 

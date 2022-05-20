@@ -6,7 +6,7 @@
 [![npm version](https://badgen.net/npm/v/@soinlabs/request)](https://www.npmjs.com/package/@soinlabs/request)
 [![npm downloads](https://badgen.net/npm/dm/@soinlabs/request)](https://www.npmjs.com/package/@soinlabs/request)
 
-This repo/package exports 3 libraries: 
+This repo/package exports 3 libraries:
 
 `Request`: It's a simple and lightweight library based on HTTP Promise queries used as a function, ready to use anywhere.
 
@@ -28,6 +28,7 @@ const response = await Request(params)
    *  {string}  params.url - Required
    *  {string}  params.responseType - Default json
    *  {object}  params.data - Default null
+   *  {boolean}  params.throwError - Default false
 	 *  {array} 	return response - the data from the URL.
 ```
 
@@ -44,32 +45,32 @@ Add the model in package/model or whatever place where is it the Squeeze models/
 
 ```js
 module.exports = (sequelize, DataTypes) => {
-  const WebRequestLog = sequelize.define(
-    'WebRequestLog',
-    {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: DataTypes.INTEGER,
-      },
-      data: { type: JSON },
-      retries: { type: DataTypes.INTEGER },
-      attempts: { type: DataTypes.INTEGER },
-      status: {
-        type: DataTypes.INTEGER,
-        enum: (-1, 0, 1),
-      },
-      response: { type: JSON },
-      error: { type: JSON },
-      method: { type: DataTypes.STRING },
-      url: { type: DataTypes.STRING },
-    },
-    {
-      tableName: 'WebRequestLogs'
-    }
-  )
-  return WebRequestLog
+	const WebRequestLog = sequelize.define(
+		'WebRequestLog',
+		{
+			id: {
+				allowNull: false,
+				autoIncrement: true,
+				primaryKey: true,
+				type: DataTypes.INTEGER,
+			},
+			data: { type: JSON },
+			retries: { type: DataTypes.INTEGER },
+			attempts: { type: DataTypes.INTEGER },
+			status: {
+				type: DataTypes.INTEGER,
+				enum: (-1, 0, 1),
+			},
+			response: { type: JSON },
+			error: { type: JSON },
+			method: { type: DataTypes.STRING },
+			url: { type: DataTypes.STRING },
+		},
+		{
+			tableName: 'WebRequestLogs',
+		}
+	)
+	return WebRequestLog
 }
 ```
 
@@ -106,4 +107,3 @@ await requestScheduler.start(limit)
 - Where
 *  {number} limit - Default 10
 ```
-

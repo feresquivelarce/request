@@ -1,8 +1,33 @@
-
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+## [1.0.14] - 2022-05-20
+
+### Fixes
+
+- Missing merge
+
+## [1.0.13] - 2022-05-20
+
+### Fixes
+
+- Get status from response
+
+## [1.0.12] - 2022-05-20
+
+### Fixes
+
+- the throw error is modified when a request gives an error, since it did not return the status or the statusCode
+
+## [1.0.8] - 2022-01-19
+
+### Added
+
+- throwError param was added for request that need throws the exception when request fails
+- Sequelize was added as a dependency for projects without that dependency, because is required for request trackings
 
 ## [0.0.1] - 2021-03-08
 
@@ -32,7 +57,5 @@ All notable changes to this project will be documented in this file.
 - added more Unit Tests
 - change in badges
 
-
 [unreleased]: https://github.com/SoinLabs/request/compare/v1.1.0...HEAD
-
 [0.0.1]: https://github.com/SoinLabs/request/releases/tag/v0.0.1
