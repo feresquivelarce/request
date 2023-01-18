@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.0.15] - 2023-01-18
+### Added
+Array of errors in error object
 ## [1.0.14] - 2022-05-20
 
 ### Fixes
