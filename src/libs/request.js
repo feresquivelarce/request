@@ -12,15 +12,24 @@ const { createRequestOptions } = require("../utils/helpers");
  * @property {string}  params.url - Required
  * @property {string}  params.responseType - Default json
  * @property {object}  params.data - Default null
+ * @param {object} options - Object
+ * @property {object}  options.returnAttributes - Array with data to get
  * @property {throwError}  params.throwError - Default false
- * @return {array} The data from the URL.
+ * @return {array} The data and options from the URL.
  */
-const Request = async (params) => {
+const Request = async (params, options = false) => {
   try {
     const opt = createRequestOptions(params);
 
     const response = await axios(opt);
     const { data } = response;
+
+    if (options && options.returnAttributes && options.returnAttributes.length > 0) {
+      const responseObj = { data }
+      options.returnAttributes.forEach(attr => responseObj[attr] = response[attr]);
+      return responseObj
+    }
+
     return data;
   } catch (error) {
     //se agrega parametro para responder con erro en caso de que falle
