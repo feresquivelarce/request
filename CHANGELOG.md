@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.0.15] - 2023-01-23
+### Added
+Add param options
+
 ## [1.0.15] - 2023-01-18
 ### Added
 Array of errors in error object

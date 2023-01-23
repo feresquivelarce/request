@@ -12,6 +12,8 @@ const { createRequestOptions } = require("../utils/helpers");
  * @property {string}  params.url - Required
  * @property {string}  params.responseType - Default json
  * @property {object}  params.data - Default null
+ * @param {object} options - Object
+ * @property {object}  options.headers - Return Headers of request
  * @property {throwError}  params.throwError - Default false
  * @return {array} The data and options from the URL.
  */
@@ -24,7 +26,7 @@ const Request = async (params, options = false) => {
 
     if (options && options.returnAttributes && options.returnAttributes.length > 0) {
       const responseObj = { data }
-      options.returnAttributes.forEach(attr => responseObj[attr] = attr);
+      options.returnAttributes.forEach(attr => responseObj[attr] = response[attr]);
       return responseObj
     }
 
