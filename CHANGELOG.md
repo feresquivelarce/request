@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [1.0.15] - 2023-01-23
+## [1.0.16] - 2023-01-23
 ### Added
 The options parameter is added, this will be an array with all the options that we want to obtain from the request
 
