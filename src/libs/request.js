@@ -13,7 +13,7 @@ const { createRequestOptions } = require("../utils/helpers");
  * @property {string}  params.responseType - Default json
  * @property {object}  params.data - Default null
  * @param {object} options - Object
- * @property {object}  options.headers - Return Headers of request
+ * @property {object}  options.returnAttributes - Array with data to get
  * @property {throwError}  params.throwError - Default false
  * @return {array} The data and options from the URL.
  */

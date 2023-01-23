@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ## [1.0.15] - 2023-01-23
 ### Added
-Add param options
+The options parameter is added, this will be an array with all the options that we want to obtain from the request
 
 ## [1.0.15] - 2023-01-18
 ### Added
