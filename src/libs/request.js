@@ -59,7 +59,7 @@ const Request = async (params, options = false) => {
       const errorData = new Error(data.message, data);
       errorData.statusCode = data.statusCode;
       errorData.status = response ? response.status : error.statusCode;
-      errorData.errors = data.errors;
+      errorData.errors = response && data.errors ? data.errors : error ? [error] : []
       throw errorData;
     }
     return data;
