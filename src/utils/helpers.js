@@ -8,7 +8,7 @@ const printError = (error) => {
 }
 
 const createRequestOptions = (parameters) => {
-	const { method, headers, url, responseType, data, params } = parameters
+	const { method, headers, url, responseType, data, params, maxContentLength, maxBodyLength } = parameters
 	if (!url) adapterAxiosError('URL can not be undefined')
 	const opt = {
 		method: method || 'GET',
@@ -18,6 +18,11 @@ const createRequestOptions = (parameters) => {
 		data: data || null,
 		params: params || null,
 	}
+	if( maxContentLength && maxBodyLength) {
+		opt.maxContentLength = maxContentLength
+		opt.maxBodyLength = maxBodyLength
+	}
+	
 	return opt
 }
 

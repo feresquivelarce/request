@@ -51,13 +51,14 @@ const Request = async (params, options = false) => {
       };
     }
     // Retorna el resto de errores posibles
+    
     const { response } = error;
-    data = response.data;
+    data =  response ? response.data : (error && error.message && error.statusCode) ? error : {message: "Error no identificado en el request", statusCode: 500}
     adapterAxiosError(error);
     if (params && params.throwError) {
       const errorData = new Error(data.message, data);
       errorData.statusCode = data.statusCode;
-      errorData.status = response.status;
+      errorData.status = response ? response.status : error.statusCode;
       errorData.errors = data.errors;
       throw errorData;
     }
