@@ -4,13 +4,22 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.0.20] - 2024-02-26
+
+Added spread of properties to axios request to support missing properties on previos releases
+
 ## [1.0.16] - 2023-01-23
+
 ### Added
+
 The options parameter is added, this will be an array with all the options that we want to obtain from the request
 
 ## [1.0.15] - 2023-01-18
+
 ### Added
+
 Array of errors in error object
+
 ## [1.0.14] - 2022-05-20
 
 ### Fixes
