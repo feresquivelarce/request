@@ -24,10 +24,16 @@ const Request = async (params, options = false) => {
     const response = await axios(opt);
     const { data } = response;
 
-    if (options && options.returnAttributes && options.returnAttributes.length > 0) {
-      const responseObj = { data }
-      options.returnAttributes.forEach(attr => responseObj[attr] = response[attr]);
-      return responseObj
+    if (
+      options &&
+      options.returnAttributes &&
+      options.returnAttributes.length > 0
+    ) {
+      const responseObj = { data };
+      options.returnAttributes.forEach(
+        (attr) => (responseObj[attr] = response[attr])
+      );
+      return responseObj;
     }
 
     return data;
@@ -51,15 +57,29 @@ const Request = async (params, options = false) => {
       };
     }
     // Retorna el resto de errores posibles
-    
+
     const { response } = error;
-    data =  response ? response.data : (error && error.message && error.statusCode) ? error : {message: "Error no identificado en el request", statusCode: 500}
+    if (typeof response.data === "string") {
+      data = {
+        message: response.data,
+        status: response.status,
+        statusCode: response.status,
+        errors: [response.data],
+      };
+    } else {
+      data = response
+        ? response.data
+        : error && error.message && error.statusCode
+        ? error
+        : { message: "Error no identificado en el request", statusCode: 500 };
+    }
     adapterAxiosError(error);
     if (params && params.throwError) {
       const errorData = new Error(data.message, data);
       errorData.statusCode = data.statusCode;
       errorData.status = response ? response.status : error.statusCode;
-      errorData.errors = response && data.errors ? data.errors : error ? [error] : []
+      errorData.errors =
+        response && data.errors ? data.errors : error ? [error] : [];
       throw errorData;
     }
     return data;

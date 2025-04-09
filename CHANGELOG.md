@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.0.21] - 2025-04-09
+
+Added support for string instead of objects responses when error occurs
+
 ## [1.0.20] - 2024-02-26
 
 Added spread of properties to axios request to support missing properties on previos releases
